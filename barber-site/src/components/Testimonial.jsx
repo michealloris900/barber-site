@@ -22,7 +22,7 @@ const testimonials = [
     return (
       <section id="testimonials" className="py-15 pb-20"
       style={{
-        backgroundImage: "url('/assets/bgall.jpg')", // Path ke gambar
+        backgroundImage: "url('/assets/bgall.webp')", // Path ke gambar
         backgroundSize: "cover", // Gambar menutupi seluruh area tanpa distorsi
         backgroundPosition: "center", // Pusatkan gambar
         backgroundRepeat: "no-repeat", // Hindari pengulangan gambar

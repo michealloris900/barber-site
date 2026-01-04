@@ -12,7 +12,7 @@ const Story = () => {
   return (
     <section id="story" className="py-15 " 
     style={{
-        backgroundImage: "url('/assets/bgall.jpg')", // Path ke gambar
+        backgroundImage: "url('/assets/bgall.webp')", // Path ke gambar
         backgroundSize: "cover", // Gambar menutupi seluruh area tanpa distorsi
         backgroundPosition: "center", // Pusatkan gambar
         backgroundRepeat: "no-repeat", // Hindari pengulangan gambar
@@ -51,7 +51,7 @@ const Story = () => {
             className="rounded-lg overflow-hidden shadow-lg"
           >
             <img
-              src="/assets/story01.jpg" // Ganti dengan path gambar cerita
+              src="/assets/story01.webp" // Ganti dengan path gambar cerita
               alt="BarberShop Story"
               className="w-full h-auto object-cover"
               loading="lazy"

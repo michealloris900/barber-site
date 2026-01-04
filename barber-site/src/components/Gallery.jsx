@@ -1,85 +1,97 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Gallery = () => {
-  // Data statis untuk gambar galeri
   const images = [
-    "/assets/gallery1.jpg",
-    "/assets/gallery2.jpg",
-    "/assets/gallery3.jpg",
-    "/assets/gallery4.jpg",
-    "/assets/gallery5.jpg",
-    "/assets/gallery6.jpg",
-    "/assets/gallery7.jpg",
-    "/assets/gallery8.jpg",
+    "/assets/gallery1.webp",
+    "/assets/gallery2.webp",
+    "/assets/gallery3.webp",
+    "/assets/gallery4.webp",
+    "/assets/gallery5.webp",
+    "/assets/gallery6.webp",
+    "/assets/gallery7.webp",
+    "/assets/gallery8.webp",
   ];
-  // State untuk lightbox
+
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section id="gallery" className="py-15"
-    style={{
-        backgroundImage: "url('/assets/bgall.jpg')", // Path ke gambar
-        backgroundSize: "cover", // Gambar menutupi seluruh area tanpa distorsi
-        backgroundPosition: "center", // Pusatkan gambar
-        backgroundRepeat: "no-repeat", // Hindari pengulangan gambar
-        minHeight: "100vh", // Pastikan background mencakup seluruh tinggi viewport
-    }}
+    <section 
+      id="gallery" 
+      className="relative py-15 min-h-screen bg-center bg-cover bg-no-repeat"
+      style={{
+        backgroundImage: "url('/assets/bgall.webp')",
+        // 'loading' dihapus dari sini karena tidak valid di style
+      }}
     >
-      <div className="container mx-auto px-6 text-center">
-        {/* Judul */}
+      {/* Overlay Gelap: Meningkatkan kontras teks & skor Accessibility */}
+      <div className="absolute inset-0 bg-black/60"></div>
+
+      <div className="container relative z-10 mx-auto px-6 text-center">
+        {/* Judul: Pastikan warna teks kontras dengan background */}
         <h2 className="text-4xl font-bold mb-12 text-orange-400">Our Gallery</h2>
 
-        {/* Grid Layout untuk Galeri */}
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }} // Trigger animasi sedikit lebih awal
           variants={{
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: {
-                staggerChildren: 0.2, // Animasi muncul satu per satu
-              },
+              transition: { staggerChildren: 0.1 }, // Sedikit lebih cepat agar terasa responsif
             },
           }}
         >
           {images.map((image, index) => (
             <motion.div
               key={index}
-              className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
+              className="overflow-hidden rounded-lg shadow-lg cursor-pointer bg-gray-800" // Background gelap saat loading
               variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 },
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
               }}
-              whileHover={{ scale: 1.05 }} // Efek hover
-              onClick={() => setSelectedImage(image)} // Buka lightbox saat diklik
+              whileHover={{ scale: 1.03 }}
+              onClick={() => setSelectedImage(image)}
             >
               <img
                 src={image}
-                alt={`Gallery ${index + 1}`}
+                alt={`Koleksi gaya rambut BrayBarbers ${index + 1}`} // Alt text yang lebih deskriptif untuk SEO
                 className="w-full h-48 object-cover"
-                loading="lazy"
+                loading="lazy" // Benar ditaruh di sini
+                decoding="async" // Membantu performa rendering browser
               />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Lightbox */}
-        {selectedImage && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
-            onClick={() => setSelectedImage(null)} // Tutup lightbox saat diklik di luar
-          >
-            <img
-              src={selectedImage}
-              alt="Lightbox"
-              className="max-w-screen max-h-screen object-contain"
-            />
-          </div>
-        )}
+        {/* Lightbox dengan AnimatePresence agar transisi tutup-buka halus */}
+        <AnimatePresence>
+          {selectedImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-4"
+              onClick={() => setSelectedImage(null)}
+            >
+              <motion.img
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                src={selectedImage}
+                alt="Hasil cukur rambut diperbesar"
+                className="max-w-full max-h-[90vh] object-contain rounded-md"
+              />
+              <button 
+                className="absolute top-5 right-5 text-white text-3xl"
+                onClick={() => setSelectedImage(null)}
+              >
+                &times;
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

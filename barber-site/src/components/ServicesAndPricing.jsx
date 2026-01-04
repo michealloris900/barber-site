@@ -5,44 +5,44 @@ const ServicesAndPricing = () => {
         name: "Haircut",
         description: "Classic and modern styles.",
         price: "Rp.300.000",
-        image: "/assets/service1.jpg", // Gambar layanan
+        image: "/assets/service1.webp", // Gambar layanan
       },
       {
         name: "Beard Trim",
         description: "Perfectly groomed beard.",
         price: "Rp.250.000",
-        image: "/assets/service2.jpg",
+        image: "/assets/service2.webp",
       },
       {
         name: "Shaving",
         description: "Smooth and clean shave.",
         price: "Rp.180.000",
-        image: "/assets/service3.jpg",
+        image: "/assets/service3.webp",
       },
       {
         name: "Hair Coloring",
         description: "Custom hair coloring services.",
         price: "Rp.300.000",
-        image: "/assets/service4.jpg",
+        image: "/assets/service4.webp",
       },
       {
         name: "Kids Haircut",
         description: "Special haircut for kids.",
         price: "Rp.120.000",
-        image: "/assets/service5.jpg",
+        image: "/assets/service5.webp",
       },
         {
             name: "Senior Haircut",
             description: "Discounted haircut for seniors.",
             price: "Rp.100.000",
-            image: "/assets/service6.jpg",
+            image: "/assets/service6.webp",
       },
     ];
   
     return (
       <section id="services-and-pricing" className="py-10"
       style={{
-        backgroundImage: "url('/assets/bgall.jpg')", // Path ke gambar
+        backgroundImage: "url('/assets/bgall.webp')", // Path ke gambar
         backgroundSize: "cover", // Gambar menutupi seluruh area tanpa distorsi
         backgroundPosition: "center", // Pusatkan gambar
         backgroundRepeat: "no-repeat", // Hindari pengulangan gambar

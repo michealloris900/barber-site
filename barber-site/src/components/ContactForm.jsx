@@ -4,7 +4,7 @@ const ContactForm = () => {
     return (
       <section id="contact" className="py-20"
       style={{
-        backgroundImage: "url('/assets/bgall.jpg')", // Path ke gambar
+        backgroundImage: "url('/assets/bgall.webp')", // Path ke gambar
                 backgroundSize: "cover", // Gambar menutupi seluruh area tanpa distorsi
                 backgroundPosition: "center", // Pusatkan gambar
                 backgroundRepeat: "no-repeat", // Hindari pengulangan gambar

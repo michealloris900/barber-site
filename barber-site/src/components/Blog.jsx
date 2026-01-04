@@ -4,14 +4,14 @@ const articles = [
     title: "Top 7 Potongan Rambut Terbaik 2025",
     description:
       "Membahas gaya rambut yang sedang populer.",
-    image: "/assets/art01/TumbArt01.png",
+    image: "/assets/art01/TumbArt01.webp",
   },
   {
     id: 2,
     title: "Produk wajib dimiliki pria di 2025",
     description:
       "Panduan Lengkap Memilih Produk Styling agar Tidak Salah Gaya",
-    image: "/assets/art02/tmb.02.png",
+    image: "/assets/art02/tmb.02.webp",
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ const Blog = () => {
   return (
     <section id="blog" className="py-12"
     style={{
-      backgroundImage: "url('/assets/bgall.jpg')", // Path ke gambar
+      backgroundImage: "url('/assets/bgall.webp')", // Path ke gambar
       backgroundSize: "cover", // Gambar menutupi seluruh area tanpa distorsi
       backgroundPosition: "center", // Pusatkan gambar
       backgroundRepeat: "no-repeat", // Hindari pengulangan gambar
